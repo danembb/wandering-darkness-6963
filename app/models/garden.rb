@@ -6,6 +6,7 @@ class Garden < ApplicationRecord
     .select('plants.name')
     .where('days_to_harvest < 100')
     .group('plants.id')
+    .order('plants.name')
     .distinct('plants.name')
   end
 end

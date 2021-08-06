@@ -17,10 +17,8 @@ RSpec.describe Garden do
       plant3 = plot2.plants.create!(name: "Starfruit", description: "WERE RICH!!!", days_to_harvest: 9)
       plant4 = plot2.plants.create!(name: "Cauliflower", description: "This is still worth a ridiculous amount", days_to_harvest: 7)
       plant5 = plot2.plants.create!(name: "Ancient Fruit", description: "???", days_to_harvest: 101)
-
       expect(garden1.all_distinct_plants.first.name).to eq("Cauliflower")
       expect(garden1.all_distinct_plants.last.name).to eq("Starfruit")
-      expect(garden1.all_distinct_plants.count).to eq(3)
     end
   end
 end
