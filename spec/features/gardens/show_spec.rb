@@ -10,7 +10,8 @@ RSpec.describe 'gardens show page' do
     @plant1 = @plot1.plants.create!(name: "Cauliflower", description: "Why is this worth so much??", days_to_harvest: 7)
     @plant2 = @plot1.plants.create!(name: "Coffee Beans", description: "Is someone gonna help me harvest all these coffee beans??", days_to_harvest: 13)
     @plant3 = @plot2.plants.create!(name: "Starfruit", description: "WERE RICH!!!", days_to_harvest: 9)
-    @plant3 = @plot2.plants.create!(name: "Cauliflower", description: "This is still worth a ridiculous amount", days_to_harvest: 7)
+    @plant4 = @plot2.plants.create!(name: "Cauliflower", description: "This is still worth a ridiculous amount", days_to_harvest: 7)
+    @plant5 = @plot2.plants.create!(name: "Ancient Fruit", description: "???", days_to_harvest: 101)
   end
 
   # User Story 3, Garden's Plants
@@ -23,9 +24,10 @@ RSpec.describe 'gardens show page' do
     it 'can see a unique list of all my plots plants of plants less than 100 days to harvest' do
       visit "/gardens/#{@garden1.id}"
 
-
+      save_and_open_page
       expect(page).to have_content(@plant1.name)
       expect(page).to have_content(@plant2.name)
       expect(page).to have_content(@plant3.name)
+      expect(page).to_not have_content(@plant5.name)
     end
 end
